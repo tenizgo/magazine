@@ -46,7 +46,6 @@ public class Mein {
         System.out.println("Минимальная сумма товара: " + minPrice);
 
 
-
         //Начало работы
         System.out.println("Здравствуйте, введите ваше имя:");
         String name = scanner.nextLine();
@@ -66,87 +65,109 @@ public class Mein {
 
 
             if (line.equals("Квас")) {
-                System.out.println("Вы добавили квас");
-                kvass = kvass + 1;
-                isProduct = true;
-                checkout = checkout + 1;
-                wallet = wallet - kvassPrice; // руб.
-
+                if (kvassPrice < wallet) {
+                    System.out.println("Вы добавили квас");
+                    kvass = kvass + 1;
+                    isProduct = true;
+                    checkout = checkout + 1;
+                    wallet = wallet - kvassPrice; // руб.
+                } else {
+                    System.out.println("Недостаточно средств для покупки данного товара!");
+                }
             }
 
             if (line.equals("Хлеб")) {
-                System.out.println("Вы добавили Хлеб");
-                bread = bread + 1;
-                isProduct = true;
-                checkout = checkout + 1;
-                wallet = wallet - breadPrice; // руб.
+                if (breadPrice < wallet) {
+                    System.out.println("Вы добавили Хлеб");
+                    bread = bread + 1;
+                    isProduct = true;
+                    checkout = checkout + 1;
+                    wallet = wallet - breadPrice; // руб.
+                } else {
+                    System.out.println("Недостаточно средств для покупки данного товара!");
+                }
+
+                if (line.equals("Рыба")) {
+                    if (fishPrice < wallet) {
+                        System.out.println("Вы добавили рыбу");
+                        fish = fish + 1;
+                        isProduct = true;
+                        checkout = checkout + 1;
+                        wallet = wallet - fishPrice; // руб.
+                    } else {
+                        System.out.println("Недостаточно средств для покупки данного товара!");
+                    }
+                }
+                if (line.equals("Пиво")) {
+                    if (beerPrice < wallet) {
+                        System.out.println("Вы добавили Пиво");
+                        beer = beer + 1;
+                        isProduct = true;
+                        checkout = checkout + 1;
+                        wallet = wallet - beerPrice; // руб.
+                    } else {
+                        System.out.println("Недостаточно средств для покупки данного товара!");
+                    }
+                }
+
+                if (line.equals("Колбаса")) {
+                    if (sausagePrice < wallet) {
+                        System.out.println("Вы добавили колбасу");
+                        sausage = sausage + 1;
+                        isProduct = true;
+                        checkout = checkout + 1;
+                        wallet = wallet - sausagePrice; // руб.
+                    } else {
+                        System.out.println("Недостаточно средств для покупки данного товара!");
+                    }
+                }
+
+                if (line.equals("Чипсы")) {
+                    if (chipsPrice < wallet) {
+                        System.out.println("Вы добавили чипсы");
+                        chips = chips + 1;
+                        isProduct = true;
+                        checkout = checkout + 1;
+                        wallet = wallet - chipsPrice;
+                    } else {
+                        System.out.println("Недостаточно средств для покупки данного товара!");
+                    }
+                }
+
+                if (line.equals("Закончили")) {
+                    break;
+                }
+
+                if (!isProduct) {
+                    System.out.println(line + " Продукт не найден!");
+                }
+
+
             }
-
-            if (line.equals("Рыба")) {
-                System.out.println("Вы добавили рыбу");
-                fish = fish + 1;
-                isProduct = true;
-                checkout = checkout + 1;
-                wallet = wallet - fishPrice; // руб.
+            String text = " Итого у вас в корзине: ";
+            if (kvass > 0) {
+                text = text + kvass + " Квас ";
             }
-
-            if (line.equals("Пиво")) {
-                System.out.println("Вы добавили Пиво");
-                beer = beer + 1;
-                isProduct = true;
-                checkout = checkout + 1;
-                wallet = wallet - beerPrice; // руб.
+            if (bread > 0) {
+                text = text + bread + " Хлеб ";
             }
-
-            if (line.equals("Колбаса")) {
-                System.out.println("Вы добавили колбасу");
-                sausage = sausage + 1;
-                isProduct = true;
-                checkout = checkout + 1;
-                wallet = wallet - sausagePrice; // руб.
+            if (fish > 0) {
+                text = text + fish + " Рыба ";
             }
-
-            if (line.equals("Чипсы")) {
-                System.out.println("Вы добавили чипсы");
-                chips = chips + 1;
-                isProduct = true;
-                checkout = checkout + 1;
-                wallet = wallet - chipsPrice;
+            if (beer > 0) {
+                text = text + beer + " Пиво ";
             }
-
-            if (line.equals("Закончили")) {
-                break;
+            if (sausage > 0) {
+                text = text + sausage + " Колбаса ";
             }
-
-            if (!isProduct) {
-                System.out.println(line + " Продукт не найден!");
+            if (chips > 0) {
+                text = text + chips + " Чипсы ";
             }
-
-
+            if (wallet > 0) {
+                text = text + " К оплате " + wallet + " руб.";
+            }
+            System.out.println(name + text);
+            // System.out.println(name + " Итого у вас в корзине: Квас " + kvass + ", Хлеб " + bread + ", Рыба " + fish + ", Пиво " + beer + ", Колбоса " + sausage + ", Чипсы " + chips + " ");
         }
-        String text = " Итого у вас в корзине: ";
-        if (kvass > 0) {
-            text = text + kvass + " Квас ";
-        }
-        if (bread > 0) {
-            text = text + bread + " Хлеб ";
-        }
-        if (fish > 0) {
-            text = text + fish + " Рыба ";
-        }
-        if (beer > 0) {
-            text = text + beer + " Пиво ";
-        }
-        if (sausage > 0) {
-            text = text + sausage + " Колбаса ";
-        }
-        if (chips > 0) {
-            text = text + chips + " Чипсы ";
-        }
-        if (wallet > 0) {
-            text = text + " К оплате " + wallet + " руб.";
-        }
-        System.out.println(name + text);
-        // System.out.println(name + " Итого у вас в корзине: Квас " + kvass + ", Хлеб " + bread + ", Рыба " + fish + ", Пиво " + beer + ", Колбоса " + sausage + ", Чипсы " + chips + " ");
     }
 }
