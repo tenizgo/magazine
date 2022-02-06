@@ -17,6 +17,13 @@ public class Mein {
         System.out.println("Здравствуйте " + name + ". Какие продукты покупаем сегодня?");
         System.out.println("Ваш кошелек: " + wallet);
         while (true) {
+            System.out.println("Сколько сейчас в кошельке " + wallet);
+
+            if (wallet <= 0) {
+                System.out.println("Недостаточно средств на вашем счету ");
+                break;
+
+            }
 
             boolean isProduct = false;
             String line = scanner.nextLine();
@@ -81,10 +88,7 @@ public class Mein {
             if (checkout > 5) {
                 System.out.println("Ваша корзина полна, будьте добры пройти на кассу " + checkout);
             }
-            if (wallet >= 500) {
-                System.out.println("Недостаточно средств на вашем счету ");
-                break;
-            }
+
 
         }
         String text = " Итого у вас в корзине: ";
