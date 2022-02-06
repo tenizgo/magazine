@@ -10,8 +10,44 @@ public class Mein {
         int sausage = 0; //колбаса
         int chips = 0; // чипсы
         int checkout = 0; //корзина
-        int wallet = 500; //кошелек
+        int wallet = 100; //кошелек
 
+
+        //стоимость товаров
+        int kvassPrice = 15;
+        int breadPrice = 10;
+        int fishPrice = 130;
+        int beerPrice = 100;
+        int sausagePrice = 70;
+        int chipsPrice = 45;
+
+        //Минимальная стоимость
+        int minPrice = 100000;
+
+        if (kvassPrice < minPrice) {
+            minPrice = kvassPrice;
+        }
+        if (breadPrice < minPrice) {
+            minPrice = breadPrice;
+        }
+        if (fishPrice < minPrice) {
+            minPrice = fishPrice;
+        }
+        if (beerPrice < minPrice) {
+            minPrice = beerPrice;
+        }
+        if (sausagePrice < minPrice) {
+            minPrice = sausagePrice;
+        }
+        if (chipsPrice < minPrice) {
+            minPrice = chipsPrice;
+        }
+
+        System.out.println("Минимальная сумма товара: " + minPrice);
+
+
+
+        //Начало работы
         System.out.println("Здравствуйте, введите ваше имя:");
         String name = scanner.nextLine();
         System.out.println("Здравствуйте " + name + ". Какие продукты покупаем сегодня?");
@@ -19,10 +55,10 @@ public class Mein {
         while (true) {
             System.out.println("Сколько сейчас в кошельке " + wallet);
 
-            if (wallet <= 0) {
-                System.out.println("Недостаточно средств на вашем счету ");
-                break;
 
+            if (wallet < minPrice) {
+                System.out.println("Недостаточно средств");
+                break;
             }
 
             boolean isProduct = false;
@@ -34,7 +70,7 @@ public class Mein {
                 kvass = kvass + 1;
                 isProduct = true;
                 checkout = checkout + 1;
-                wallet = wallet - 45; // руб.
+                wallet = wallet - kvassPrice; // руб.
 
             }
 
@@ -43,7 +79,7 @@ public class Mein {
                 bread = bread + 1;
                 isProduct = true;
                 checkout = checkout + 1;
-                wallet = wallet - 30; // руб.
+                wallet = wallet - breadPrice; // руб.
             }
 
             if (line.equals("Рыба")) {
@@ -51,7 +87,7 @@ public class Mein {
                 fish = fish + 1;
                 isProduct = true;
                 checkout = checkout + 1;
-                wallet = wallet - 130; // руб.
+                wallet = wallet - fishPrice; // руб.
             }
 
             if (line.equals("Пиво")) {
@@ -59,7 +95,7 @@ public class Mein {
                 beer = beer + 1;
                 isProduct = true;
                 checkout = checkout + 1;
-                wallet = wallet - 100; // руб.
+                wallet = wallet - beerPrice; // руб.
             }
 
             if (line.equals("Колбаса")) {
@@ -67,7 +103,7 @@ public class Mein {
                 sausage = sausage + 1;
                 isProduct = true;
                 checkout = checkout + 1;
-                wallet = wallet - 70; // руб.
+                wallet = wallet - sausagePrice; // руб.
             }
 
             if (line.equals("Чипсы")) {
@@ -75,7 +111,7 @@ public class Mein {
                 chips = chips + 1;
                 isProduct = true;
                 checkout = checkout + 1;
-                wallet = wallet - 45;
+                wallet = wallet - chipsPrice;
             }
 
             if (line.equals("Закончили")) {
@@ -84,9 +120,6 @@ public class Mein {
 
             if (!isProduct) {
                 System.out.println(line + " Продукт не найден!");
-            }
-            if (checkout > 5) {
-                System.out.println("Ваша корзина полна, будьте добры пройти на кассу " + checkout);
             }
 
 
@@ -114,6 +147,6 @@ public class Mein {
             text = text + " К оплате " + wallet + " руб.";
         }
         System.out.println(name + text);
-       // System.out.println(name + " Итого у вас в корзине: Квас " + kvass + ", Хлеб " + bread + ", Рыба " + fish + ", Пиво " + beer + ", Колбоса " + sausage + ", Чипсы " + chips + " ");
+        // System.out.println(name + " Итого у вас в корзине: Квас " + kvass + ", Хлеб " + bread + ", Рыба " + fish + ", Пиво " + beer + ", Колбоса " + sausage + ", Чипсы " + chips + " ");
     }
 }
